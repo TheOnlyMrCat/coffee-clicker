@@ -4,10 +4,12 @@ import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
 import com.dockdev.clickers.coffee.object.Config;
+import com.dockdev.clickers.coffee.object.Handler;
 
 public class Game extends Canvas implements Runnable{
 
@@ -27,6 +29,8 @@ public class Game extends Canvas implements Runnable{
 	public BufferedImage coffeemachine, coffeecup;
 	
 	public double mL = 0;
+
+	private Handler handler;
 	
 	public Game() {
 		window = new Window(WIDTH, HEIGHT, "Coffee clicker " + version, this);
@@ -98,8 +102,7 @@ public class Game extends Canvas implements Runnable{
 	}
 
 	private void tick() {
-		// TODO Auto-generated method stub
-		
+		handler.tick();
 	}
 
 	public synchronized void start() {
@@ -122,4 +125,7 @@ public class Game extends Canvas implements Runnable{
 		System.exit(0);
 	}
 
+	public BufferedImage getImage(String filepath) throws IOException {
+		return ImageIO.read(getClass().getResourceAsStream(filepath));
+	}
 }
