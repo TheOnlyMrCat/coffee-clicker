@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
@@ -29,15 +30,17 @@ public class Game extends Canvas implements Runnable{
 	public BufferedImage coffeemachine, coffeecup;
 	
 	public double mL = 0;
+	
+	public double perClick = 1;
 
-	private Handler handler;
+	private Handler handler = new Handler();
 	
 	public Game() {
 		window = new Window(WIDTH, HEIGHT, "Coffee clicker " + version, this);
 		
 		try {
-			coffeemachine = ImageIO.read(getClass().getResourceAsStream("/game/coffee-machine.png"));
-			coffeecup = ImageIO.read(getClass().getResourceAsStream("/game/coffee-cup.png"));
+			coffeemachine = ImageIO.read(getImage("/game/coffee-machine.png"));
+			coffeecup = ImageIO.read(getImage("/game/coffee-cup.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -74,12 +77,7 @@ public class Game extends Canvas implements Runnable{
 				 System.out.println("FPS: " + frames);
 				frames = 0;
 			}
-			
-			if (!window.isVisible()) {
-				break;
-			}
 		}
-		stop();
 	}
 	
 	private void render() {
@@ -92,7 +90,7 @@ public class Game extends Canvas implements Runnable{
 		Graphics g = bs.getDrawGraphics();
 		switch (menuState) {
 			case GAME: 
-				g.drawImage(coffeemachine, 0, 0, null);
+				g.drawImage(coffeemachine, 200, 125, null);
 				break;
 			default :
 				break;
@@ -125,7 +123,7 @@ public class Game extends Canvas implements Runnable{
 		System.exit(0);
 	}
 
-	public BufferedImage getImage(String filepath) throws IOException {
-		return ImageIO.read(getClass().getResourceAsStream(filepath));
+	public InputStream getImage(String filepath) throws IOException {
+		return getClass().getResourceAsStream(filepath);
 	}
 }
