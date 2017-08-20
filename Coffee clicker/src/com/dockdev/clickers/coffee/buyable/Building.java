@@ -4,5 +4,5 @@ public abstract class Building extends Buyable {
 
 	public abstract void tick();
 	
-	public abstract boolean onBuy(double cups);
+	public abstract double getCost();
 }

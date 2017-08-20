@@ -1,16 +1,9 @@
 package com.dockdev.clickers.coffee.object;
 
-import java.awt.Rectangle;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-public class MouseInput implements MouseListener{
-
-	private Rectangle place;
-	
-	public MouseInput(Rectangle section) {
-		this.place = section;
-	}
+public class MouseInput extends MouseAdapter{
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -24,16 +17,6 @@ public class MouseInput implements MouseListener{
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
 		
 	}
 

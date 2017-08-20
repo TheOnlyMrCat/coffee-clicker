@@ -24,14 +24,8 @@ public class Cursor extends Building {
 	}
 
 	@Override
-	public boolean onBuy(double cups) {
-		if (cups < cost) {
-			return false;
-		}
-		else {
-			cost+= cost / 3;
-			return true;
-		}
+	public double getCost() {
+		return cost;
 	}
 
 }

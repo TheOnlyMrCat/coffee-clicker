@@ -7,5 +7,5 @@ public abstract class Buyable {
 	//Render in the menu
 	public abstract void render();
 	
-	public abstract boolean onBuy(double cups);
+	public abstract double getCost();
 }
